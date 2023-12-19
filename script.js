@@ -8,7 +8,7 @@ function changeView() {
     signUp.classList.toggle('d-none');
 }
 
-function signUp() {
+function signup() {
     let fname = document.getElementById("fname");
     let lname = document.getElementById("lname");
     let email = document.getElementById("email");
@@ -41,5 +41,34 @@ function signUp() {
         }
     }
     request.open("POST", "server/SignUpProcess.php", true);
+    request.send(form);
+}
+
+
+const signin = () => {
+    let email = document.getElementById("email2");
+    let password = document.getElementById("password2");
+    let rememberme = document.getElementById("rememberme");
+
+    let form = new FormData();
+    form.append("e", email.value);
+    form.append("p", password.value);
+    form.append("r", rememberme.checked);
+
+    let request = new XMLHttpRequest();
+
+    request.onreadystatechange = () => {
+        if (request.status == 200 & request.readyState == 4) {
+            let response = request.responseText;
+
+            if (response == "success") {
+                window.location = "home.php";
+            } else {
+                document.getElementById("msg1").innerHTML = response;
+                document.getElementById("msgdiv1").className = "d-block";
+            }
+        }
+    }
+    request.open("POST", "server/SignInProcess.php", true);
     request.send(form);
 }

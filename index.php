@@ -113,7 +113,7 @@ include "connection.php";
                             </div>
 
                             <div class="col-12 col-lg-6 d-grid">
-                                <button class="btn btn-primary" onclick="signUp();">Sign Up</button>
+                                <button class="btn btn-primary" onclick="signup();">Sign Up</button>
                             </div>
 
                             <div class="col-12 col-lg-6 d-grid">
@@ -133,13 +133,31 @@ include "connection.php";
                                 <p class="title02">Sign In</p>
                             </div>
 
+                            <div class="col-12 d-none" id="msgdiv1">
+                                <div class="alert alert-danger" role="alert" id="msg1">
+
+                                </div>
+                            </div>
+
+                            <?php 
+                                $email = "";
+                                $password = "";
+
+                                if(isset($_COOKIE["email"])){
+                                    $email = $_COOKIE["email"];
+                                }
+                                if(isset($_COOKIE["password"])){
+                                    $email = $_COOKIE["password"];
+                                }
+                            ?>
+
                             <div class="col-12">
                                 <label class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email2" value="" />
+                                <input type="email" class="form-control" id="email2" value="<?php echo $email?>" />
                             </div>
                             <div class="col-12">
                                 <label class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password2" value="" />
+                                <input type="password" class="form-control" id="password2" value="<?php echo $password?>" />
                             </div>
                             <div class="col-6">
                                 <div class="form-check">
@@ -151,7 +169,7 @@ include "connection.php";
                                 <a href="#" class="link-primary">Forgot Password?</a>
                             </div>
                             <div class="col-12 col-lg-6 d-grid">
-                                <button class="btn btn-primary">Sign In</button>
+                                <button class="btn btn-primary" onclick="signin();">Sign In</button>
                             </div>
                             <div class="col-12 col-lg-6 d-grid">
                                 <button class="btn btn-danger" onclick="changeView();">New to eShop? Join Now</button>
