@@ -90,7 +90,7 @@ include "connection.php";
                                 <label class="form-label">Gender</label>
                                 <select class="form-control" id="gender">
 
-                                    <option value="3">Select</option>
+                                    <option value="0">Select</option>
 
                                     <?php
 
